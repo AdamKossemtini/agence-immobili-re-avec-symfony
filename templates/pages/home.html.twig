@@ -1,0 +1,24 @@
+{% extends 'base.html.twig'%}
+{% block tilte 'Agence Adam' %}
+{% block body %}
+<div class="jumbotron text-center">
+<h1>Bienvenue sur notre site d'agence d'immeubilier</h1>
+<p>AKMN Agence</p></div>
+<div class="container">
+<h2>les derniers biens </h2>
+
+<div class="rows flex">
+{% for property in properties %}
+ <div class="col-3">
+ <div class="card-body">
+ <h5 class="card-title">
+<a href="{{ path('property.show',{id: property.id,slug: property.slug})}}" >{{ property.title}}</a>
+ </h5>
+ <p class="card-test">{{ property.city}}({{ property.postalcode}})</p>
+ <div class="text-primary" style="font-weight: bold;font-size:2rem;">{{ property.getFomattedPrice}}dt</div>
+ </div>
+ </div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
